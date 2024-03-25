@@ -1,5 +1,5 @@
 ## agbee-api-python example
-agbeeの外部連携APIにアクセスするpythonのExampleです
+agbeeの外部連携APIにアクセスするpythonのExampleです。APIの利用方法については、こちらの[Agbee APIリファレンス](https://agbee.co.jp/)を参照してください。
 
 ### 環境構築
 依存関係をインストール
