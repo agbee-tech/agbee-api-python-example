@@ -4,7 +4,7 @@ agbeeの外部連携APIにアクセスするpythonのExampleです。APIの利�
 ### 環境構築
 依存関係をインストール
 ```
-git clone 
+git clone https://github.com/agbee-tech/agbee-api-python-example
 cd agbee-api-python-example
 poetry install
 ```
