@@ -7,8 +7,8 @@ load_dotenv()
 
 Authorization_URL = os.getenv("Authorization_URL")
 api_key = os.getenv("API_KEY")
-USERNAME = os.getenv("USERNAME")
-PASSWORD = os.getenv("PASSWORD")
+AGBEE_USERNAME = os.getenv("AGBEE_USERNAME")
+AGBEE_PASSWORD = os.getenv("AGBEE_PASSWORD")
 API_URL = os.getenv("API_URL")
 
 def get_token():
@@ -17,8 +17,8 @@ def get_token():
         "Content-Type": "application/json",
     }
     payload = {
-        "username": USERNAME,
-        "password": PASSWORD
+        "username": AGBEE_USERNAME,
+        "password": AGBEE_PASSWORD
     }
     response = requests.post(Authorization_URL + "token", headers=headers, data=json.dumps(payload))
     return response
