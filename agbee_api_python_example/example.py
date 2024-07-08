@@ -32,8 +32,9 @@ def call_appsync_api_example(id_token):
         "query": """query MyQuery {
             listDevices {
                 items {
-                id
-                name
+                    id
+                    name
+                    status
                 }
             }
         }"""
