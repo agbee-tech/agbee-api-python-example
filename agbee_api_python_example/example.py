@@ -7,18 +7,18 @@ load_dotenv()
 
 Authorization_URL = os.getenv("Authorization_URL")
 api_key = os.getenv("API_KEY")
-USERNAME = os.getenv("USERNAME")
-PASSWORD = os.getenv("PASSWORD")
+AGBEE_USERNAME = os.getenv("AGBEE_USERNAME")
+AGBEE_PASSWORD = os.getenv("AGBEE_PASSWORD")
 API_URL = os.getenv("API_URL")
 
-def get_cognito_token():
+def get_token():
     headers = {
         "x-api-key": api_key,
         "Content-Type": "application/json",
     }
     payload = {
-        "username": USERNAME,
-        "password": PASSWORD
+        "username": AGBEE_USERNAME,
+        "password": AGBEE_PASSWORD
     }
     response = requests.post(Authorization_URL + "token", headers=headers, data=json.dumps(payload))
     return response
@@ -43,7 +43,7 @@ def call_appsync_api_example(id_token):
     return response.json()
 
 # 実行例
-auth_response = get_cognito_token()
+auth_response = get_token()
 if auth_response.status_code == 200:
     tokens = json.loads(auth_response.text)
     response = call_appsync_api_example(tokens["IdToken"])
