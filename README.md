@@ -44,8 +44,10 @@ git clone https://github.com/agbee-tech/agbee-api-python-example
 cd agbee-api-python-example
 poetry install
 ```
-.env.exampleファイルを参考に同じディレクトリ内に.envファイルを作成して、必要な項目を記入します。
+
 ## Run
+.env.exampleファイルを参考に同じディレクトリ内に.envファイルを作成して、必要な項目を記入します。
+
 ```
 cd agbee-api-python-example
 # poetryの場合
