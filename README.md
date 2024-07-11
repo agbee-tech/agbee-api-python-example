@@ -1,7 +1,15 @@
 ## agbee-api-python example
 agbeeの外部連携APIにアクセスするpythonのExampleです。APIの利用方法については、こちらの[Agbee APIリファレンス](https://agbee.co.jp/)を参照してください。
 
-### 環境構築
+## 環境構築
+### 現在のpython環境にインストールする場合
+```
+git clone https://github.com/agbee-tech/agbee-api-python-example
+cd agbee-api-python-example
+pip3 install .
+```
+
+### pyenv + poetryを利用する場合(Ubuntu)
 前提環境をインストールをします。
 python環境をインストールします。仮想環境は[pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation)を推奨しています。
 ```
@@ -37,9 +45,13 @@ cd agbee-api-python-example
 poetry install
 ```
 .env.exampleファイルを参考に同じディレクトリ内に.envファイルを作成して、必要な項目を記入します。
-### Run
+## Run
 ```
 cd agbee-api-python-example
+# poetryの場合
 poetry run python agbee_api_python_example/example.py
+
+# pip installの場合
+python agbee_api_python_example/example.py
 ```
 
