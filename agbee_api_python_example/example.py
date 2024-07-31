@@ -7,7 +7,7 @@ load_dotenv()
 
 Authorization_URL = os.getenv("Authorization_URL")
 api_key = os.getenv("API_KEY")
-USERNAME = os.getenv("USERNAME")
+USERNAME = os.getenv("ACCOUNT_ID")
 PASSWORD = os.getenv("PASSWORD")
 API_URL = os.getenv("API_URL")
 
