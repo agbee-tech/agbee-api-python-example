@@ -1,13 +1,14 @@
 import json
 import requests
+from gql import gql, Client
+from gql.transport.requests import RequestsHTTPTransport
 from dotenv import load_dotenv
 import os
 
 # 概要
-# このプログラムは、agbeeAPIに接続するrequestsライブラリを用いた最もシンプルなクライアントexampleです。
+# このプログラムは、agbeeAPIに接続するgqlライブラリを用いた最もシンプルなクライアントexampleです。
 # 環境変数からAPIのアクセスに必要な情報を取得し、認証APIからトークンを取得します。
 # 取得したトークンを使って、デバイスのリストを取得します。
-# requestsライブラリは、非同期の通信は行えますがsubscriptionの動機通信には利用できません。
 # このプログラムを動かすには、.envファイルを編集して環境変数を設定する必要があります。
 
 # .envファイルをロードして環境変数を利用可能にする
@@ -35,12 +36,10 @@ def get_token():
 
 # APIを呼び出す関数
 def call_api_example(id_token):
-    headers = {
-        "Authorization": id_token  # トークンをヘッダーに設定
-    }
     # GraphQLクエリ。例えば、デバイスのリストを取得するクエリ
-    graphql_query = {
-        "query": """query MyQuery {
+    graphql_query = gql(
+        """
+        query ListDevices {
             listDevices {
                 items {
                     id
@@ -48,10 +47,22 @@ def call_api_example(id_token):
                     status
                 }
             }
-        }"""
-    }
-    response = requests.post(API_URL, json=graphql_query, headers=headers)
-    return response.json()
+        }
+        """
+    )
+
+    # gqlクライアントの設定
+    transport = RequestsHTTPTransport(
+        url=API_URL,
+        headers={"Authorization": id_token},
+        use_json=True,
+    )
+
+    client = Client(transport=transport, fetch_schema_from_transport=True)
+
+    # GraphQLクエリの実行
+    result = client.execute(graphql_query)
+    return result
 
 # 実行例
 # 認証APIからトークンを取得
