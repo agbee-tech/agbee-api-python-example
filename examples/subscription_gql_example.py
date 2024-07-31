@@ -4,7 +4,6 @@ from urllib.parse import urlparse
 from gql import gql, Client
 from gql.transport.appsync_auth import AppSyncJWTAuthentication
 from gql.transport.appsync_websockets import AppSyncWebsocketsTransport
-from gql.transport.websockets import WebsocketsTransport
 from dotenv import load_dotenv
 import os
 
