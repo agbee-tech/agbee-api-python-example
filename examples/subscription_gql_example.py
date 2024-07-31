@@ -12,7 +12,8 @@ import os
 # このプログラムは、agbeeAPIに接続するgqlライブラリを用いたサブスクリプションのexampleです。
 # 環境変数からAPIのアクセスに必要な情報を取得し、認証APIからトークンを取得します。
 # 取得したトークンを使って、デバイスの状態変更をサブスクリプションで受信します。
-# コールバック関数を設定して、取得した情報をプリントし、Ctrl-Cでプログラムを終了します。
+# コールバック関数を設定して、取得した情報をプリントし、NEED_SUPPORTの状態を検知します。
+# このプログラムは、Ctrl-Cでプログラムを終了します。
 # このプログラムを動かすには、.envファイルを編集して環境変数を設定する必要があります。
 
 
@@ -43,6 +44,12 @@ def get_token():
 def on_message(data):
     print("Received data:", data)
 
+    status = data.get("onUpdateDevice").get("status")
+    name = data.get("onUpdateDevice").get("name")
+
+    if status == "NEED_SUPPORT":
+        print(f"{name}の異常を検知しました")
+
 # APIのサブスクリプションを呼び出す関数
 def subscribe_to_api(id_token):
     ws_url = API_URL.replace("https", "wss") + "/realtime"
@@ -64,6 +71,8 @@ def subscribe_to_api(id_token):
         """
         subscription OnUpdateDevice {
             onUpdateDevice {
+                id
+                name
                 status
                 temperature
                 updatedAt
