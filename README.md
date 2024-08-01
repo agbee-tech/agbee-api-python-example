@@ -51,9 +51,9 @@ poetry install
 ```
 cd agbee-api-python-example
 # poetryの場合
-poetry run python agbee_api_python_example/example.py
+poetry run python examples/simple_request_example.py
 
 # pip installの場合
-python agbee_api_python_example/example.py
+python examples/simple_request_example.py
 ```
 
