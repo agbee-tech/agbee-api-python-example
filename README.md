@@ -57,3 +57,14 @@ poetry run python examples/simple_request_example.py
 python examples/simple_request_example.py
 ```
 
+## サンプルプログラムの概要
+
+| ファイル名                     | 説明                                                                                                                   |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `simple_request_example.py`    | requestsライブラリを使用してagbeeAPIに接続し、デバイスのリストを取得するプログラムです。                                  |
+| `simple_gql_example.py`        | gqlライブラリを使用してagbeeAPIに接続し、デバイスのリストを取得するプログラムです。                                      |
+| `subscription_gql_example.py`  | gqlライブラリを使用してagbeeAPIにサブスクリプションを行い、デバイスの状態変更を受信するプログラムです。                    |
+| `detect_wait_action_example.py`| gqlライブラリを使用してagbeeがユーザーのボタン指示を待機している状態を検知するプログラムです。非同期のサブスクリプションを使用しています。 |
+
+
+詳細プログラムのについては[こちら](examples/DETAILS.md)をご覧ください。
